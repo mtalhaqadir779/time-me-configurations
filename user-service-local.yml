@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${USER_SERVICE_DB_URL:jdbc:postgresql://localhost:5432/timeme_user}
+    username: ${USER_SERVICE_DB_USERNAME:postgres}
+    password: ${USER_SERVICE_DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

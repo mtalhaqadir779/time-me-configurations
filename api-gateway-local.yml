@@ -39,5 +39,3 @@ spring:
           uri: lb://time-entry-service
           predicates:
             - Path=/api/time/**
-          filters:
-            - AuthFilter

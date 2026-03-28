@@ -1,14 +1,20 @@
+server:
+  port: 8082
+
 spring:
   datasource:
-    url: ${USER_SERVICE_DB_URL:jdbc:postgresql://localhost:5432/timeme_user}
-    username: ${USER_SERVICE_DB_USERNAME:postgres}
-    password: ${USER_SERVICE_DB_PASSWORD:postgres}
-    driver-class-name: org.postgresql.Driver
-
+    url: jdbc:postgresql://localhost:5432/timeme_user
+    username: postgres
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+internal:
+  secret: 65484e2cc795d3050f32f1065912d961ce8c8143f3e4442bc6593c46a5c02604

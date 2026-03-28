@@ -25,15 +25,11 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
-          filters:
-            - AuthFilter
 
         - id: project-service
           uri: lb://project-service
           predicates:
             - Path=/api/projects/**
-          filters:
-            - AuthFilter
 
         - id: time-entry-service
           uri: lb://time-entry-service

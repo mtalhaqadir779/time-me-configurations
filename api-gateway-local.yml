@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+jwt:
+  secret: 85857f75edd08a2d41c5e553b88e16f73cdcaa3e0fa9c5f1a19998ba2e76f690
+
+internal:
+  secret: 65484e2cc795d3050f32f1065912d961ce8c8143f3e4442bc6593c46a5c02604
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/auth/**
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - AuthFilter
+
+        - id: project-service
+          uri: lb://project-service
+          predicates:
+            - Path=/api/projects/**
+          filters:
+            - AuthFilter
+
+        - id: time-entry-service
+          uri: lb://time-entry-service
+          predicates:
+            - Path=/api/time/**
+          filters:
+            - AuthFilter
